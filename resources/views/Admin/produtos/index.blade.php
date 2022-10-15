@@ -10,7 +10,8 @@
     <div class="container">
         <div class="row">
             @foreach ($listaProdutos as $lista)
-                <div class="card col-3 ml-2">
+            <div class="col">
+                <div class="card ml-2">
                     <img src={{$lista->imagem}} height="280" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ $lista->nome_produto }}</h5>
@@ -27,12 +28,17 @@
                         @endif
                     </ul>
                     <div class="card-body">
-                        <a href="#" class="btn btn-dark">Editar item</a>
+                        <a href="{{ route('produtos.edit', [$lista->id]) }}" class="btn btn-dark">Editar item</a>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
-        {{$listaProdutos->links()}}
+        <div class="container mt-5">
+            <div class="d-flex justify-content-center">
+                {{$listaProdutos->links()}}
+            </div>
+        </div>
     </div>
 
 @stop

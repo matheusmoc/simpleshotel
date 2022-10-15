@@ -34,9 +34,11 @@ class ProdutoController extends Controller
     }
 
 
-    public function edit(Produto $produto)
+    public function edit($id)
     {
-        return view('Admin.produtos.edit');
+        $produto = Produto::find($id);
+
+        return view('Admin.produtos.edit', compact('produto'));
     }
 
     public function update(Request $request, Produto $produto)
