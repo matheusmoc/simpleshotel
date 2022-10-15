@@ -312,10 +312,10 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'PRODUTOS',
+            'text'        => 'Produtos',
             'url'         => 'admin/produtos',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'icon'        => 'far fa-fw fa-product',
+            'label'       => 5,
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],

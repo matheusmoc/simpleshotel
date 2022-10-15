@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
 
 class ProdutoSeeder extends Seeder
 {
@@ -20,7 +17,7 @@ class ProdutoSeeder extends Seeder
     {
         DB::table('produtos')->insert(
             [
-                'imagem' => null,
+                'imagem' => 'https://source.unsplash.com/random/5',
                 'nome_produto' => 'Água mineral',
                 'tipo' => 'Da fonte',
                 'preco' => 4.99,
@@ -28,9 +25,11 @@ class ProdutoSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
+        );
 
+        DB::table('produtos')->insert(
             [
-                'imagem' => null,
+                'imagem' => 'https://source.unsplash.com/random/4',
                 'nome_produto' => 'Cerveja',
                 'tipo' => '600 ml',
                 'preco' => 8.99,
@@ -38,9 +37,11 @@ class ProdutoSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
-            
+        );
+
+        DB::table('produtos')->insert(
             [
-                'imagem' => null,
+                'imagem' => 'https://source.unsplash.com/random/1',
                 'nome_produto' => 'Refrigerante',
                 'tipo' => 'Coca-cola 1L',
                 'preco' => 7.50,
@@ -48,20 +49,22 @@ class ProdutoSeeder extends Seeder
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
+        );
 
-
+        DB::table('produtos')->insert(
             [
-                'imagem' => null,
+                'imagem' => 'https://source.unsplash.com/random/2',
                 'nome_produto' => 'PF',
-                'tipo' => 'completo',
+                'tipo' => 'Completo',
                 'preco' => 20.00,
                 'quantidade'=> 'ilimitado',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
-
+        );
+        DB::table('produtos')->insert(
             [
-                'imagem' => null,
+                'imagem' => 'https://source.unsplash.com/random/3',
                 'nome_produto' => 'Brigadeiro',
                 'tipo' => 'unitário',
                 'preco' => 2.00,

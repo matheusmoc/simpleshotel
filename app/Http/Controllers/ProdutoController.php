@@ -10,10 +10,12 @@ class ProdutoController extends Controller
 
     public function index()
     {
-        return view('Admin.produtos.index');
+        $listaProdutos = Produto::orderBy('id', 'DESC')->paginate(3);
+
+        return view('Admin.produtos.index', compact('listaProdutos'));
     }
 
- 
+
     public function create()
     {
         return view('Admin.produtos.create');
