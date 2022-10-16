@@ -17,7 +17,7 @@ class ProdutoSeeder extends Seeder
     {
         DB::table('produtos')->insert(
             [
-                'imagem' => 'https://source.unsplash.com/random/5',
+                'imagem' =>NULL,
                 'nome_produto' => 'Água mineral',
                 'tipo' => 'Da fonte',
                 'preco' => 4.99,
@@ -29,7 +29,7 @@ class ProdutoSeeder extends Seeder
 
         DB::table('produtos')->insert(
             [
-                'imagem' => 'https://source.unsplash.com/random/4',
+                'imagem' => NULL,
                 'nome_produto' => 'Cerveja',
                 'tipo' => '600 ml',
                 'preco' => 8.99,
@@ -41,7 +41,7 @@ class ProdutoSeeder extends Seeder
 
         DB::table('produtos')->insert(
             [
-                'imagem' => 'https://source.unsplash.com/random/1',
+                'imagem' => NULL,
                 'nome_produto' => 'Refrigerante',
                 'tipo' => 'Coca-cola 1L',
                 'preco' => 7.50,
@@ -53,7 +53,7 @@ class ProdutoSeeder extends Seeder
 
         DB::table('produtos')->insert(
             [
-                'imagem' => 'https://source.unsplash.com/random/2',
+                'imagem' => NULL,
                 'nome_produto' => 'PF',
                 'tipo' => 'Completo',
                 'preco' => 20.00,
@@ -64,7 +64,7 @@ class ProdutoSeeder extends Seeder
         );
         DB::table('produtos')->insert(
             [
-                'imagem' => 'https://source.unsplash.com/random/3',
+                'imagem' => NULL,
                 'nome_produto' => 'Brigadeiro',
                 'tipo' => 'unitário',
                 'preco' => 2.00,
