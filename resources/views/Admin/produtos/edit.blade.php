@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Painel - Edição de produto')
 
 @section('content_header')
-    <h1>PAINEL / Edição do item "{{ $produto->nome_produto }}"</h1>
+    <h1> Edição do item "{{ $produto->nome_produto }}"</h1>
 @stop
 
 @section('content')

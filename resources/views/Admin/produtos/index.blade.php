@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Painel do graçom - PRODUTOS')
+@section('title', 'Painel - Lista produtos')
 
 @section('content_header')
-    <h1>PAINEL / produtos</h1>
+    <h1>Lista de produtos</h1>
 @stop
 
 @section('content')
@@ -27,7 +27,7 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">R$ {{ $lista->preco }}</li>
                             <li class="list-group-item">{{ $lista->tipo }}</li>
-                            @if ($lista->quantidade != 'ilimitado')
+                            @if ($lista->quantidade != 'ilimitado' && NULL )
                                 <li class="list-group-item">Estoque: {{ $lista->quantidade }} unidades</li>
                             @else
                                 <li class="list-group-item">Estoque: {{ $lista->quantidade }}</li>

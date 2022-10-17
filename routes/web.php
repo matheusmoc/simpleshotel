@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\{ProdutoController, MesaController, OcupanteController};
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +25,6 @@ Route::middleware(['auth'])->prefix('/admin')->group(function () {
     });
     // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('produtos', ProdutoController::class);
+    Route::resource('mesas', MesaController::class);
+    Route::resource('ocupantes', OcupanteController::class);
 });

@@ -25,7 +25,7 @@ class UpdateProdutoRequest extends FormRequest
     {
         return [
             'imagem' => 'nullable',
-            'nome_produto' => 'required|unique:produtos|max:255',
+            'nome_produto' => 'nullable|max:30',
             'tipo' => 'required',
             'preco' => 'required',
         ];
