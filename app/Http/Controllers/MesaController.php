@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mesa;
+use App\Models\Ocupante;
 use Illuminate\Http\Request;
 
 class MesaController extends Controller
@@ -14,7 +15,7 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::orderBy('id', 'DESC')->paginate(3);
+        $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes')->paginate(3);
         return view('Admin.mesas.index', compact('mesas'));
     }
 
@@ -23,9 +24,8 @@ class MesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
     }
 
     /**
@@ -56,9 +56,12 @@ class MesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $ocupantes = Ocupante::orderBy('nome')
+        ->get();
+
+        return view('Admin.mesas.edit', compact('ocupantes'));
     }
 
     /**

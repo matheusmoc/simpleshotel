@@ -9,7 +9,7 @@ class Mesa extends Model
 {
     use HasFactory;
 
-    public function ocupante(){
-        return $this->belongsTo(Mesa::class, 'mesa_id', 'id');
+    public function ocupantes(){
+        return $this->belongsTo(Mesa::class);
     }
 }

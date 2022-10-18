@@ -318,11 +318,11 @@ return [
             'label'       => 5,
             'label_color' => 'success',
         ],
-        
-        
+
+
         [
             'text'    => 'Mesas',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-fw fa-table',
             'submenu' => [
                 [
                     'text' => 'Lista de mesas',
@@ -338,7 +338,7 @@ return [
                 ],
             ],
         ],
-        
+
         ['header' => 'Usuário'],
         [
             'text' => 'Administradores',
@@ -361,7 +361,7 @@ return [
                 ],
             ],
         ],
-        
+
     ],
 
     /*

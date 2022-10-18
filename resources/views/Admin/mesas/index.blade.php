@@ -100,13 +100,10 @@
 
 
                                 {{-- @if ($atendimento->finalizado == false) --}}
-                                <a href="#" type="button" class="btn btn-primary" id="send" title="Editar">
+                                <a href="{{ route('mesas.edit', $mesa->id) }}" type="button" class="btn btn-primary" id="send" title="Adicionar Ocupante">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
 
-                                <a href="#" type="button" class="btn btn-danger" id="send" title="Encerrar">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </a>
                                 {{-- @endif --}}
 
                             </div>

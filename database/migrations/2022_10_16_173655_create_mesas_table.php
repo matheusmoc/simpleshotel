@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('ocupante_id')->nullable();
+            $table->foreign('ocupante_id')->references('id')->on('ocupantes');
             $table->timestamps();
         });
     }

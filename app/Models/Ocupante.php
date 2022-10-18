@@ -12,7 +12,7 @@ class Ocupante extends Model
 
 
     public function mesa(){
-        return $this->hasMany(Ocupante::class, 'ocupante_id', 'id');
+        return $this->hasMany(Ocupante::class);
     }
 
 }
