@@ -15,7 +15,7 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes')->paginate(3);
+        $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes:id,nome,mesa_id')->paginate(3);
         return view('Admin.mesas.index', compact('mesas'));
     }
 
@@ -58,8 +58,7 @@ class MesaController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $ocupantes = Ocupante::orderBy('nome')
-        ->get();
+        $ocupantes = Ocupante::orderBy('nome')->get();
 
         return view('Admin.mesas.edit', compact('ocupantes'));
     }

@@ -10,6 +10,6 @@ class Mesa extends Model
     use HasFactory;
 
     public function ocupantes(){
-        return $this->belongsTo(Mesa::class);
+        return $this->hasMany(Ocupante::class);
     }
 }

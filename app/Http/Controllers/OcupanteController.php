@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mesa;
 use App\Models\Ocupante;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,12 @@ class OcupanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('Admin.ocupantes.create');
+        $ocupante = Ocupante::orderBy('nome')->get();
+        $mesas = Mesa::orderBy('id')->get();
+        
+        return view('Admin.ocupantes.create', ['ocupante' => $ocupante, 'mesas' => $mesas]);
     }
 
     /**
@@ -36,7 +40,9 @@ class OcupanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ocupante::create($request->all());
+
+        return redirect()->route('ocupantes.index')->with('success', 'Cliente cadastrado');
     }
 
     /**

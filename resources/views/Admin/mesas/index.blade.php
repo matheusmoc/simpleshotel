@@ -57,7 +57,7 @@
     </div>
 
     <span class="badge rounded-pill bg-light w-25 p-1 mb-1">
-          {{ $mesas->count()}} resultadoe de {{  $mesas->total() }} itens
+        {{ $mesas->count() }} resultadoe de {{ $mesas->total() }} itens
     </span>
 
     <div class="card card-dark card-outline">
@@ -73,51 +73,44 @@
 
                 <tbody>
                     @foreach ($mesas as $mesa)
-                    <tr>
-                        <td>{{$mesa->id}}</td>
-                        <td></td>
-                        {{-- @if ($atendimento->estagiario)
-                                <td>{{ $atendimento->estagiario->nome }}</td>
-                            @else
-                                <td>
-                                    <div class="badge bg-secondary">
-                                        Sem estagiário vinculado
+                        <tr>
+                            <td>{{ $mesa->id }}</td>
+                            <td>
+                                {{ $mesa->ocupantes->pluck('nome')->join(', ') }}
+                            </td>
+
+                            <td>
+                                @if ($mesa->ocupantes->count() >= 4)
+                                    <div class="badge bg-danger">
+                                        Mesa ocupada
                                     </div>
-                                </td>
-                            @endif --}}
-                        <td>
-                            {{-- @if ($atendimento->finalizado == false)
-                                    <div class="badge bg-success font-weight-bold text-white">Em aberto</div>
-                                @elseif($atendimento->finalizado == true)
-                                    <div class="badge bg-danger font-weight-bold text-white">Encerrado</div>
-                                @endif --}}
-                        </td>
-                        <td scope="col" style="width: 300px">
-                            <div class="btn-group">
-                                <a href="#" type="button" class="btn btn-default" title="Visualizar">
-                                    <i class="far fa-eye"></i>
-                                </a>
-
-
-                                {{-- @if ($atendimento->finalizado == false) --}}
-                                <a href="{{ route('mesas.edit', $mesa->id) }}" type="button" class="btn btn-primary" id="send" title="Adicionar Ocupante">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </a>
-
-                                {{-- @endif --}}
-
-                            </div>
-                        </td>
-                    </tr>
+                                @elseif($mesa->ocupantes->count() > 1 && $mesa->ocupantes->count() < 4)
+                                <div class="badge bg-warning">
+                                    Mesa com cadeira vaga
+                                </div>
+                                @else
+                                    <div class="badge bg-success">
+                                        Mesa livre
+                                    </div>
+                                @endif
+                            </td>
+                            <td scope="col" style="width: 300px">
+                                <div class="btn-group">
+                                    <a href="#" type="button" class="btn btn-default" title="Visualizar">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
 
         </div>
         @if ($mesas->hasPages())
-        <div class="card-footer clearfix pb-0">
-            {{ $mesas->links() }}
-        </div>
+            <div class="card-footer clearfix pb-0">
+                {{ $mesas->links() }}
+            </div>
         @endif
 
     </div>

@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ocupante extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome', 'email', 'endereco', 'telefone', 'cidade', 'estado', 'cep', 'consumo'];
+    protected $fillable = ['nome', 'email', 'endereco', 'telefone', 'cidade', 'estado', 'cep', 'consumo', 'mesa_id'];
 
 
     public function mesa(){
-        return $this->hasMany(Ocupante::class);
+        return $this->belongsTo(Mesa::class);
     }
-
 }

@@ -21,9 +21,13 @@ return new class extends Migration
             $table->string('telefone');
             $table->string('cidade');
             $table->text('estado', 2);
-            $table->string('cep');
+            $table->integer('cep');
             $table->decimal('consumo', 9, 2)->nullable();
+
+            $table->unsignedBigInteger('mesa_id')->nullable();
+            $table->foreign('mesa_id')->references('id')->on('mesas');
             $table->timestamps();
+            
         });
     }
 
