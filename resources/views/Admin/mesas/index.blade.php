@@ -35,10 +35,6 @@
 
             <div class="card-footer">
                 <div class="row">
-                    <div class="col-12 col-sm-5">
-                        <a href="{{ route('mesas.create') }}" class="btn btn-outline-dark mb-2 cadastrar"><i
-                                class="fas fa-plus"></i> Cadastrar mesa</a>
-                    </div>
                     <div class="col-12 col-sm-7">
                         <div class="pesquisar-limpar">
                             <button type="button" class="btn btn-outline-secondary mb-2 limpar" onclick="ClearFields()">
@@ -76,7 +72,13 @@
                         <tr>
                             <td>{{ $mesa->id }}</td>
                             <td>
-                                {{ $mesa->ocupantes->pluck('nome')->join(', ') }}
+                                @if ($mesa->ocupantes == null)
+                                    <div class="badge bg-secondary">
+                                        Sem ocupantes
+                                    </div>
+                                @else
+                                    {{ $mesa->ocupantes->pluck('nome')->join(', ') }}
+                                @endif
                             </td>
 
                             <td>
@@ -85,9 +87,9 @@
                                         Mesa ocupada
                                     </div>
                                 @elseif($mesa->ocupantes->count() > 1 && $mesa->ocupantes->count() < 4)
-                                <div class="badge bg-warning">
-                                    Mesa com cadeira vaga
-                                </div>
+                                    <div class="badge bg-warning">
+                                        Mesa com cadeira vaga
+                                    </div>
                                 @else
                                     <div class="badge bg-success">
                                         Mesa livre
@@ -96,7 +98,7 @@
                             </td>
                             <td scope="col" style="width: 300px">
                                 <div class="btn-group">
-                                    <a href="#" type="button" class="btn btn-default" title="Visualizar">
+                                    <a href="{{ route('mesas.show', [$mesa->id]) }}" type="button" class="btn btn-default" title="Visualizar">
                                         <i class="far fa-eye"></i>
                                     </a>
                                 </div>

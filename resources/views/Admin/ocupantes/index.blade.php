@@ -8,6 +8,9 @@
 
 @section('content')
 <div class="container">
+    <div class="col-12 col-sm-5 mb-5 mt-4">
+        <a href="{{ route('ocupantes.create') }}" class="btn btn-outline-dark mb-2 cadastrar"><i class="fas fa-plus"></i> Cadastrar cliente</a>
+    </div>
     <div class="row text-center">
         <!-- Team item -->
         @foreach ($ocupantes as $ocupante)   

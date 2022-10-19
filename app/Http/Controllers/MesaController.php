@@ -47,7 +47,8 @@ class MesaController extends Controller
      */
     public function show($id)
     {
-        //
+        $caixa = Mesa::findOrFail($id)->with('ocupantes')->get();
+        return view('Admin.mesas.show', compact('caixa'));
     }
 
     /**
