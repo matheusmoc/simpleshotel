@@ -10,4 +10,10 @@ class Produto extends Model
     use HasFactory;
 
     protected $fillable = ['imagem','nome_produto', 'preco', 'tipo', 'quantidade'];
+
+
+    
+    public function mesa(){
+        return $this->belongsTo(Mesa::class);
+    }
 }

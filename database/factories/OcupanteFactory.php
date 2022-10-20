@@ -24,7 +24,7 @@ class OcupanteFactory extends Factory
             'cidade' => fake()->city(),
             'estado' => fake()->country(),
             'cep' => fake()->randomNumber(8),
-            'consumo' => fake()->numberBetween($min = 100, $max = 500),
+           
         ];
     }
 }

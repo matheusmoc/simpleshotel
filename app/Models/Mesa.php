@@ -12,4 +12,9 @@ class Mesa extends Model
     public function ocupantes(){
         return $this->hasMany(Ocupante::class);
     }
+
+        
+    public function produtos(){
+        return $this->hasMany(Produto::class);
+    }
 }

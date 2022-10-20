@@ -19,6 +19,7 @@ class MesaFactory extends Factory
     {
         return [
             'id' => fake()->randomNumber(5),
+            // 'consumo' => fake()->numberBetween($min = 100, $max = 500),
         ];
     }
 }

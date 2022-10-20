@@ -70,11 +70,6 @@
                                 </select>
                             </div>
 
-
-
-
-
-
                         </div>
                         <button type="submit" class="btn btn-dark">Cadastrar</button>
                     </form>

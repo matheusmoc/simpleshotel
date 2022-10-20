@@ -41,7 +41,9 @@
             </div>
         </form>
         <div class="p-4 ">
-            <h2 class="col">Valor total de vendas: R$ {{ number_format($total) }}</h2>
+            <h2 class="col">Valor total de vendas: R$ 
+                {{-- {{ number_format($total) }} --}}
+            </h2>
         </div>
     </div>
 

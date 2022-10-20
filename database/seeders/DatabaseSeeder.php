@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ProdutoSeeder::class,
             UserSeerder::class,
             MesaSeeder::class,
-            OcupanteSeeder::class
+            OcupanteSeeder::class,
         ]);
     }
 }
