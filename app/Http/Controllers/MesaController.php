@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mesa;
 use App\Models\Ocupante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB as FacadesDB;
 
 class MesaController extends Controller
 {
@@ -16,7 +17,8 @@ class MesaController extends Controller
     public function index()
     {
         $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes:id,nome,mesa_id')->paginate(3);
-        return view('Admin.mesas.index', compact('mesas'));
+        $total = FacadesDB::table('ocupantes')->sum('consumo');
+        return view('Admin.mesas.index', compact('mesas', 'total'));
     }
 
     /**
@@ -36,7 +38,7 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -47,8 +49,9 @@ class MesaController extends Controller
      */
     public function show($id)
     {
-        $caixa = Mesa::findOrFail($id)->with('ocupantes')->get();
-        return view('Admin.mesas.show', compact('caixa'));
+        $mesa = Mesa::findOrFail($id);
+
+        return view('Admin.mesas.show', compact('mesa'));
     }
 
     /**
@@ -73,7 +76,7 @@ class MesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

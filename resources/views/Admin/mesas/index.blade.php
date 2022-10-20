@@ -21,16 +21,6 @@
                             placeholder="Nº" type="text" data-mask="##########">
                     </div>
                 </div>
-                {{-- <div class="col form-group">
-                    <label for="status">Status</label>
-                    <select class="form-control" id="status" name="atendimento">
-                        <option class="font-weight-bold text-muted" value="">Todos</option>
-                        <option class="font-weight-bold text-success" value="aberto"
-                            {{ request()->atendimento === 'aberto' ? 'selected' : '' }}>Em aberto</option>
-                        <option class="font-weight-bold text-danger" value="encerrado"
-                            {{ request()->atendimento === 'encerrado' ? 'selected' : '' }}>Encerrado</option>
-                    </select>
-                </div> --}}
             </div>
 
             <div class="card-footer">
@@ -50,7 +40,11 @@
                 </div>
             </div>
         </form>
+        <div class="p-4 ">
+            <h2 class="col">Valor total de vendas: R$ {{ number_format($total) }}</h2>
+        </div>
     </div>
+
 
     <span class="badge rounded-pill bg-light w-25 p-1 mb-1">
         {{ $mesas->count() }} resultadoe de {{ $mesas->total() }} itens
@@ -86,7 +80,7 @@
                                     <div class="badge bg-danger">
                                         Mesa ocupada
                                     </div>
-                                @elseif($mesa->ocupantes->count() > 1 && $mesa->ocupantes->count() < 4)
+                                @elseif($mesa->ocupantes->count() >= 1 && $mesa->ocupantes->count() <= 4)
                                     <div class="badge bg-warning">
                                         Mesa com cadeira vaga
                                     </div>
@@ -98,9 +92,13 @@
                             </td>
                             <td scope="col" style="width: 300px">
                                 <div class="btn-group">
-                                    <a href="{{ route('mesas.show', [$mesa->id]) }}" type="button" class="btn btn-default" title="Visualizar">
+
+
+                                    <!-- Button trigger modal -->
+                                    <a href="{{ route('mesas.show', $mesa->id) }}" type="button" class="btn btn-primary">
                                         <i class="far fa-eye"></i>
                                     </a>
+
                                 </div>
                             </td>
                         </tr>

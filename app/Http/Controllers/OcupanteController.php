@@ -6,6 +6,7 @@ use App\Models\Mesa;
 use App\Models\Ocupante;
 use Illuminate\Http\Request;
 
+
 class OcupanteController extends Controller
 {
     /**
@@ -16,6 +17,8 @@ class OcupanteController extends Controller
     public function index()
     {
         $ocupantes = Ocupante::orderBy('id', 'DESC')->paginate(8);
+        
+
         return view('Admin.ocupantes.index', compact('ocupantes'));
     }
 
@@ -53,7 +56,7 @@ class OcupanteController extends Controller
      */
     public function show(Ocupante $ocupante)
     {
-        //
+        
     }
 
     /**
@@ -62,9 +65,11 @@ class OcupanteController extends Controller
      * @param  \App\Models\Ocupante  $ocupante
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ocupante $ocupante)
+    public function edit($id)
     {
-        //
+        $ocupante = Ocupante::findOrFail($id);
+
+        return view('Admin.ocupantes.edit', ['ocupante' => $ocupante]);
     }
 
     /**
@@ -74,9 +79,13 @@ class OcupanteController extends Controller
      * @param  \App\Models\Ocupante  $ocupante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ocupante $ocupante)
+    public function update(Request $request, $id)
     {
-        //
+        $ocupante = Ocupante::findOrFail($id);
+
+        $ocupante->update(request()->all());
+
+        return redirect()->route('ocupantes.index', $ocupante->id)->with('success', 'Valor repassado!');
     }
 
     /**

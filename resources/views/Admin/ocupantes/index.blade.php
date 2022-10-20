@@ -21,6 +21,14 @@
                     <li class="list-inline-item"><a href="#" class="social-link  text-light"><i class="fab fa-whatsapp"></i></i></a></li>
                     <div>Usuário criado em: </div>
                     <div class="text-muted">{{$ocupante->created_at->format('d/m/Y')}}</div>
+                    <div class="col mb-5 mt-4">
+                        @if($ocupante->consumo == NULL)
+                        <a href="{{ route('ocupantes.edit', $ocupante->id) }}" class="btn btn-outline-light"> Adicionar valor</a>
+                        @else
+                        <div class="mb-2">Pagamento já efetuado!</div>
+                        <a href="{{ route('ocupantes.destroy', $ocupante->id) }}" class="btn btn-outline-danger"> Exluir cliente</a>
+                        @endif
+                    </div>
                 </ul>
             </div>
         </div>
