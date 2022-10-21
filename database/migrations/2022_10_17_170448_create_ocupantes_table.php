@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('cidade');
             $table->text('estado', 2);
             $table->integer('cep');
-  
-
+            $table->boolean('atendido')->default(false);
             $table->unsignedBigInteger('mesa_id')->nullable();
             $table->foreign('mesa_id')->references('id')->on('mesas');
             $table->timestamps();

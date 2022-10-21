@@ -22,12 +22,19 @@
                     <div>Usuário criado em: </div>
                     <div class="text-muted">{{$ocupante->created_at->format('d/m/Y')}}</div>
                     <div class="col mb-5 mt-4">
-                        @if($ocupante->consumo == NULL)
-                        <a href="{{ route('ocupantes.edit', $ocupante->id) }}" class="btn btn-outline-light"> Adicionar valor</a>
-                        @else
-                        <div class="mb-2">Pagamento já efetuado!</div>
+                        
+                    @if( $ocupante->atendido == true)
+                    <div class="badge bg-success">
+                        Conta paga!
+                    </div>
+                    <div class="col mt-4">
                         <a href="{{ route('ocupantes.destroy', $ocupante->id) }}" class="btn btn-outline-danger"> Exluir cliente</a>
-                        @endif
+                    </div>
+                    @elseif($ocupante->atendido == false)
+                    <a href="{{ route('ocupantes.edit', $ocupante->id) }}" class="btn btn-outline-light mb-3"> Visualizar cliente</a>
+                    <a href="{{ route('ocupantes.destroy', $ocupante->id) }}" class="btn btn-outline-danger"> Exluir cliente</a>
+                    @endif
+
                     </div>
                 </ul>
             </div>

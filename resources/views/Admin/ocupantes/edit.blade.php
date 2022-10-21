@@ -54,26 +54,22 @@
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label for="mesa_id">Mesa que será ocupada</label>
+                            <label for="mesa_id">Mesa reservada</label>
                             <input name="mesa_id" type="text" class="form-control" value="{{ $ocupante->mesa_id }}"
                                 id="inputZip" readonly>
                         </div>
+                    </div>
+                    <div class="form-check mt-4 mb-4">
+                        <input name='atendido' class="form-check-input" type="checkbox" value="1" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                         Encerrar atendimento
+                        </label>
                     </div>
                     
                     <hr style="border: 0; border-top: 1px solid;">
                     
                     
-                    
-                    
-                    
-                    
-                    <fieldset class="form-group mt-5 mb-5">
-                        <div class="col-3">
-                            <label for="inputZip">Valor a ser pago pelo cliente em R$:</label>
-                            <input type="text"  class="form-control" onkeyup="formatarMoeda()" maxlength="9" id="valor" readonly>
-                        </div>
-                    </fieldset>
-                    <button type="submit" class="btn btn-dark">Encerrar atendimento</button>
+                    <button type="submit" class="btn btn-dark">Finalizar</button>
                 </div>
             </div>
         </div>

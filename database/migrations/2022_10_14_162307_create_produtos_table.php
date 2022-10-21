@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('tipo');
             $table->decimal('preco', 9, 2);
             $table->string('quantidade')->nullable();
-            
             $table->timestamps();
         });
     }

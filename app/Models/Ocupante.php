@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ocupante extends Model
 {
     use HasFactory;
-    protected $fillable = ['nome', 'email', 'endereco', 'telefone', 'cidade', 'estado', 'cep', 'consumo', 'mesa_id'];
+    protected $fillable = ['nome', 'email', 'endereco', 'telefone', 'cidade', 'estado', 'cep', 'consumo', 'mesa_id', 'atendido'];
 
 
     public function mesa(){

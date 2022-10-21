@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProdutoRequest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProdutoController extends Controller
@@ -47,19 +47,17 @@ class ProdutoController extends Controller
     public function update(UpdateProdutoRequest $request, $id)
     {
 
-        $product = Produto::find($id);
-        $product->imagem = $request->imagem;
+        $product = Produto::findOrFail($id);
         $product->nome_produto = $request->nome_produto;
         $product->tipo = $request->tipo;
         $product->preco = $request->preco;
         $product->quantidade = $request->quantidade;
-
         if ($request->hasFile('imagem')) {
 
             $destination = 'uploads/img/' . $product->imagem;
 
-            if (Storage::exists($destination)) {
-                Storage::delete($destination);
+            if (File::exists($destination)) {
+                File::delete($destination);
             } else {
                 $file = $request->file("imagem");
                 $imageName = time() . '_' . $file->getClientOriginalName();
@@ -67,6 +65,7 @@ class ProdutoController extends Controller
                 $product->imagem = $imageName;
             }
         }
+
         $product->update($request->validated());
         return redirect()->route('produtos.index')->with('status', 'Item atualizado com sucesso !');
     }

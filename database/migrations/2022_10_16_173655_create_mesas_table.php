@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('consumo', 9, 2)->nullable(); 
-            $table->unsignedBigInteger('produto_id')->nullable();
-            $table->foreign('produto_id')->references('id')->on('produtos');
             $table->timestamps();
         });
     }

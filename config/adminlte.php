@@ -328,14 +328,6 @@ return [
                     'text' => 'Lista de mesas',
                     'url'  => 'admin/mesas',
                 ],
-                [
-                    'text' => 'Caixa',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Movimentação',
-                    'url'  => '#',
-                ],
             ],
         ],
 

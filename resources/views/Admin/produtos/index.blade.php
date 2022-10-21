@@ -13,7 +13,7 @@
                 <div class="col">
                     <div class="card ml-2">
 
-                        @if ($lista->imagem)
+                        @if ($lista->imagem != NULL)
                             <img src="{{ asset('uploads/img/' . $lista->imagem) }}" height="400"class="card-img-top"alt="...">
                         @else
                             <img src="https://source.unsplash.com/random/" height="400" class="card-img-top" alt="...">

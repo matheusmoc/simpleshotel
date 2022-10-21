@@ -41,7 +41,7 @@
             </div>
         </form>
         <div class="p-4 ">
-            <h2 class="col">Valor total de vendas: R$ 
+            <h2 class="col">Valor total de vendas: R$
                 {{-- {{ number_format($total) }} --}}
             </h2>
         </div>
@@ -94,12 +94,48 @@
                             </td>
                             <td scope="col" style="width: 300px">
                                 <div class="btn-group">
-
-
-                                    <!-- Button trigger modal -->
-                                    <a href="{{ route('mesas.show', $mesa->id) }}" type="button" class="btn btn-primary">
+                                    <a href="{{ route('mesas.show', $mesa->id) }}" type="button" class="btn btn-light">
                                         <i class="far fa-eye"></i>
                                     </a>
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-success" data-toggle="modal"
+                                        data-target="#exampleModalLong">
+                                        Escolher produto
+                                    </button>
+
+                                    <!-- Modal -->
+                                <form method="POST" action="{{ route('mesas.update', [$mesa->id]) }}">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Escolha os produtos que deseja</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                @foreach ($produtos as $produto)
+                                                    <div class="modal-body">
+                                                        <div class="d-flex justify-content-between">
+                                                            {{ $produto->nome_produto }} R$ {{ $produto->preco }}
+                                                            <input type="checkbox" name="produto_id" value="{{$produto->id}}">
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-dark">Adicionar</button>
+                                                    <button type="button" class="btn btn-light"data-dismiss="modal">Fechar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
 
                                 </div>
                             </td>

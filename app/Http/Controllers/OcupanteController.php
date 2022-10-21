@@ -81,11 +81,20 @@ class OcupanteController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $ocupante = Ocupante::findOrFail($id);
+        $ocupante->nome = $request->nome;
+        $ocupante->email = $request->email;
+        $ocupante->endereco = $request->endereco;
+        $ocupante->telefone = $request->telefone;
+        $ocupante->cidade = $request->cidade;
+        $ocupante->estado = $request->estado;
+        $ocupante->cep = $request->cep;
+        $ocupante->mesa_id = $request->mesa_id;
+        $ocupante->atendido = $request->has('atendido');
+        $ocupante->update();
 
-        $ocupante->update(request()->all());
-
-        return redirect()->route('ocupantes.index', $ocupante->id)->with('success', 'Valor repassado!');
+        return redirect()->route('ocupantes.index')->with('success', 'Valor repassado!');
     }
 
     /**

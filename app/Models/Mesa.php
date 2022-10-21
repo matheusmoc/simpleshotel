@@ -15,6 +15,6 @@ class Mesa extends Model
 
         
     public function produtos(){
-        return $this->hasMany(Produto::class);
+        return $this->belongsToMany(Produto::class)->withTimestamps();
     }
 }
