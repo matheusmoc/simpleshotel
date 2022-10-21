@@ -13,8 +13,6 @@ return new class extends Migration
             $table->unsignedBigInteger('mesa_id');
             $table->unsignedBigInteger('produto_id');
             
-            
-            $table->timestamps();
         });
 
         Schema::table('mesas_produtos', function (Blueprint $table) {

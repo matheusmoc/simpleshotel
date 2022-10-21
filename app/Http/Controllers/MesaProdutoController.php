@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mesa;
-use App\Models\Ocupante;
-use App\Models\Produto;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB as FacadesDB;
 
-class MesaController extends Controller
+class MesaProdutoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +13,7 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes:id,nome,mesa_id')->paginate(3);
-        $produtos = Produto::all();
-        // $total = FacadesDB::table('ocupantes')->sum('consumo');
-        return view('Admin.mesas.index', compact('mesas', 'produtos'));
+        //
     }
 
     /**
@@ -28,8 +21,9 @@ class MesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
+        //
     }
 
     /**
@@ -40,7 +34,7 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -51,9 +45,7 @@ class MesaController extends Controller
      */
     public function show($id)
     {
-        $mesa = Mesa::findOrFail($id);
-
-        return view('Admin.mesas.show', compact('mesa'));
+        //
     }
 
     /**
@@ -62,11 +54,9 @@ class MesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
-        $ocupantes = Ocupante::orderBy('nome')->get();
-
-        return view('Admin.mesas.edit', compact('ocupantes'));
+        //
     }
 
     /**
@@ -78,10 +68,7 @@ class MesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mesa = Mesa::findOrFail($id);
-        
-        return redirect()->route('mesas.index', $mesa->id)->with('success', 'Produto adicionado!');
-
+        //
     }
 
     /**
