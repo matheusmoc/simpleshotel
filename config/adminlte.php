@@ -314,7 +314,7 @@ return [
         [
             'text'        => 'Produtos',
             'url'         => 'admin/produtos',
-            'icon'        => 'far fa-fw fa-pot-food',
+            'icon'        => 'fas fa-fw fa-list',
             'label'       => 5,
             'label_color' => 'success',
         ],
