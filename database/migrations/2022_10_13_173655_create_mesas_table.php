@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
+            $table->decimal('consumo', 9, 2)->nullable();
             $table->timestamps();
         });
     }

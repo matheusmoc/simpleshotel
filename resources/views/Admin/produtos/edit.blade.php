@@ -72,7 +72,7 @@
                             </li>
                             <li class="list-group-item">
                                 <span>
-                                    <input class="form-control col-6" type="text" name="preco" id="">
+                                    <input class="form-control col-6" type="text" name="preco" id="valor" onkeypress="formatarMoeda()">
                                     <p class="text-muted">
                                         Preço
                                     </p>
@@ -107,6 +107,25 @@
             newimg.src = image;
             newimg.width = "100";
             display_image.appendChild(newimg);
+        };
+
+
+        function formatarMoeda() {
+        var elemento = document.getElementById('valor');
+        var valor = elemento.value;
+
+        valor = valor + '';
+        valor = parseInt(valor.replace(/[\D]+/g, ''));
+        valor = valor + '';
+        valor = valor.replace(/([0-9]{2})$/g, ".$1");
+
+        if (valor.length > 6) {
+            valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
         }
+
+        elemento.value = valor;
+        if(valor == 'NaN') elemento.value = '';
+    };
+
     </script>
 @stop

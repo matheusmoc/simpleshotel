@@ -18,9 +18,8 @@ class MesaController extends Controller
     public function index()
     {
         $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes:id,nome,mesa_id')->paginate(3);
-        $produtos = Produto::all();
-        // $total = FacadesDB::table('ocupantes')->sum('consumo');
-        return view('Admin.mesas.index', compact('mesas', 'produtos'));
+        $total = FacadesDB::table('mesas')->sum('consumo');
+        return view('Admin.mesas.index', compact('mesas', 'total'));
     }
 
     /**
@@ -40,7 +39,7 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -53,6 +52,7 @@ class MesaController extends Controller
     {
         $mesa = Mesa::findOrFail($id);
 
+
         return view('Admin.mesas.show', compact('mesa'));
     }
 
@@ -64,9 +64,11 @@ class MesaController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $mesa = Mesa::findOrFail($id);
         $ocupantes = Ocupante::orderBy('nome')->get();
+        $produtos = Produto::all();
 
-        return view('Admin.mesas.edit', compact('ocupantes'));
+        return view('Admin.mesas.edit', compact('ocupantes', 'produtos', 'mesa'));
     }
 
     /**
@@ -79,7 +81,9 @@ class MesaController extends Controller
     public function update(Request $request, $id)
     {
         $mesa = Mesa::findOrFail($id);
-        
+        $mesa->consumo = $request->consumo;
+        $mesa->update();
+
         return redirect()->route('mesas.index', $mesa->id)->with('success', 'Produto adicionado!');
 
     }

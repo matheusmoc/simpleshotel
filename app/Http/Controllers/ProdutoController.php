@@ -56,8 +56,8 @@ class ProdutoController extends Controller
 
             $destination = 'uploads/img/' . $product->imagem;
 
-            if (File::exists($destination)) {
-                File::delete($destination);
+            if (Storage::exists($destination)) {
+                Storage::delete($destination);
             } else {
                 $file = $request->file("imagem");
                 $imageName = time() . '_' . $file->getClientOriginalName();

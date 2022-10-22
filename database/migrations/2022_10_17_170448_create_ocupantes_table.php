@@ -16,17 +16,18 @@ return new class extends Migration
         Schema::create('ocupantes', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('endereco');
             $table->string('telefone');
             $table->string('cidade');
             $table->text('estado', 2);
-            $table->integer('cep');
+            $table->string('cep');
             $table->boolean('atendido')->default(false);
             $table->unsignedBigInteger('mesa_id')->nullable();
             $table->foreign('mesa_id')->references('id')->on('mesas');
             $table->timestamps();
-            
+            $table->softDeletes();
+
         });
     }
 

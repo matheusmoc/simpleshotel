@@ -17,8 +17,6 @@ class OcupanteController extends Controller
     public function index()
     {
         $ocupantes = Ocupante::orderBy('id', 'DESC')->paginate(8);
-        
-
         return view('Admin.ocupantes.index', compact('ocupantes'));
     }
 
@@ -31,7 +29,7 @@ class OcupanteController extends Controller
     {
         $ocupante = Ocupante::orderBy('nome')->get();
         $mesas = Mesa::orderBy('id')->get();
-        
+
         return view('Admin.ocupantes.create', ['ocupante' => $ocupante, 'mesas' => $mesas]);
     }
 
@@ -56,7 +54,7 @@ class OcupanteController extends Controller
      */
     public function show(Ocupante $ocupante)
     {
-        
+
     }
 
     /**
@@ -103,8 +101,11 @@ class OcupanteController extends Controller
      * @param  \App\Models\Ocupante  $ocupante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ocupante $ocupante)
+    public function destroy($id)
     {
-        //
+
+        $ocupante = Ocupante::findOrFail($id)->delete();
+
+        return redirect()->route('ocupantes.index')->with('success', 'Ocupante excluido!');
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{ProdutoController, MesaController, OcupanteController};
+use App\Http\Controllers\{ProdutoController, MesaController, UsuarioController, OcupanteController};
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +26,7 @@ Route::middleware(['auth'])->prefix('/admin')->group(function () {
     // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('produtos', ProdutoController::class);
     Route::resource('mesas', MesaController::class);
+    Route::put('mesas/pedidos/{id}', [MesaController::class, 'adicionarProduto'])->name('mesas.adicionarProduto');
     Route::resource('ocupantes', OcupanteController::class);
+    Route::resource('usuarios', UsuarioController::class)->only('index');
 });

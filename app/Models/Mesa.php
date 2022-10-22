@@ -8,13 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Mesa extends Model
 {
     use HasFactory;
+    protected $fillable = ['consumo'];
 
     public function ocupantes(){
         return $this->hasMany(Ocupante::class);
     }
 
-        
-    public function produtos(){
-        return $this->belongsToMany(Produto::class)->withTimestamps();
-    }
 }
