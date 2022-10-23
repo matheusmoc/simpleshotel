@@ -15,9 +15,10 @@ class MesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mesas = Mesa::orderBy('id', 'DESC')->with('ocupantes:id,nome,mesa_id')->paginate(3);
+        $mesas = Mesa::latest('updated_at')->with('ocupantes:id,nome,mesa_id')->search($request)->paginate(3) ->withQueryString();;
+
         $total = FacadesDB::table('mesas')->sum('consumo');
         return view('Admin.mesas.index', compact('mesas', 'total'));
     }

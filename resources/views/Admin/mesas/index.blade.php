@@ -126,5 +126,13 @@
 @stop
 
 @section('js')
-    <script></script>
+    <script>
+
+function ClearFields() {
+            $('#search-form :input').val('');
+
+            location.assign('{{env('APP_URL')}}/admin/mesas')
+        };
+
+    </script>
 @stop

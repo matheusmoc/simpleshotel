@@ -14,4 +14,11 @@ class Mesa extends Model
         return $this->hasMany(Ocupante::class);
     }
 
+    public function scopeSearch($query, $request)
+    {
+        return $query->when($request->id, function ($query, $id) {
+            return $query->where('id', 'like', '%'.$id.'%');
+        });
+    }
+
 }
